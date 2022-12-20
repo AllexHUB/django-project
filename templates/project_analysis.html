@@ -1,0 +1,88 @@
+{% extends 'header.html' %}
+{% block content %}
+    <style>
+        body {
+            background: #F9F9F9;
+        }
+
+        .outer-margin {
+            margin-top: 100px;
+        }
+
+        .frame-outer {
+            position: relative;
+            width: 70%;
+            margin: 0 auto;
+            border: 10px solid #D7CDC7;
+            padding: 10px;
+        }
+
+        .frame-inner {
+            text-align: center;
+            position: relative;
+            border: 10px solid #D7CDC7;
+        }
+
+        .frame-outer:before,
+        .frame-outer:after,
+        .frame-inner:before,
+        .frame-inner:after {
+            content: "";
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background-color: #F9F9F9;
+            background-image: linear-gradient(90deg, #DB9E3D 33%, rgba(255, 255, 255, 0) 33%, rgba(255, 255, 255, 0) 66%, #DB9E3D 66%, #DB9E3D),
+            linear-gradient(90deg, #DB9E3D 33%, rgba(255, 255, 255, 0) 33%, rgba(255, 255, 255, 0) 66%, #DB9E3D 66%, #DB9E3D);
+            background-repeat: no-repeat;
+            background-size: 30px 10px;
+            background-position: 0 0, 0 20px;
+        }
+
+        .frame-outer:before {
+            left: -10px;
+            top: -10px;
+            z-index: 3;
+        }
+
+        .frame-outer:after {
+            right: -10px;
+            top: -10px;
+            z-index: 3;
+            background-position: 10px 0, 10px 20px;
+        }
+
+        .frame-inner:before {
+            left: -30px;
+            bottom: -30px;
+            background-position: 0 10px, 0px 30px;
+        }
+
+        .frame-inner:after {
+            right: -30px;
+            bottom: -30px;
+            background-position: 10px 10px, 10px 30px;
+        }
+
+        .frame-inner p {
+            font-family: 'Open Sans', sans-serif;
+            font-style: italic;
+            font-size: 18px;
+            color: #7A7B82;
+            line-height: 1.5;
+        }
+    </style>
+    <div class="outer-margin">
+        <div class="form-margin">
+            <div class="frame-outer">
+                <div class="frame-inner">
+                    <p>{{ project.name }}</p>
+                    <p>Платформа: {{ project.platform }}</p>
+                    <p>Желаемые сроки: {{ project.terms }}</p>
+                    <p>Указанный бюджет: {{ project.price }}</p>
+                    <p>Актуальные цены на разработку по указаным срокам: {{ prices }} UAN</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

@@ -1,13 +1,11 @@
-<!DOCTYPE html>
+{% extends 'header.html' %}
 {% load socialaccount %}
-<html lang="en">
-<body>
+{% block content %}
     {% if user.is_authenticated %}
         <h1>Добро пожаловать! Вы вошли как {{ user.username }}</h1>
-        <a href="http://127.0.0.1:8000/home">Заполнить анкету</a>
+        <a href="/form">Желаете добавить проект?</a>
     {% else %}
         <h1>Авторизуйтесь в вашей учетной записи</h1>
       <a href="{% provider_login_url 'google' %}">Login With Google</a>
     {% endif %}
-</body>
-</html>
+{% endblock content %}
